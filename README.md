@@ -7,7 +7,6 @@ Part 2 adds interactive data visualizations and an expandable detail view for ea
 
 ## Video Walkthrough
 
-GIF Walkthrough: *(attach your screen recording here)*
 
 Example:
 ![Screen recording of Bookscope Dashboard](./screen-recording.gif)
