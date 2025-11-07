@@ -1,72 +1,64 @@
-# ⚡ BookScope – Harry Potter Dashboard
+# Harry Potter BookScope Dashboard (Data Dashboard Part 2)
 
-A React-based data dashboard that visualizes information from the **OpenLibrary API**, focused on *Harry Potter* books. It shows real-time stats, search and filter options, and a sleek dark Hogwarts-inspired design.
+## Overview
 
----
+This dashboard explores data from the [OpenLibrary API](https://openlibrary.org) for Harry Potter books.
+Part 2 adds interactive data visualizations and an expandable detail view for each book to tell a richer story about publication patterns and authorship in the Harry Potter universe.
 
-## 🌐 Live Demo
+## Video Walkthrough
 
-![Screen recording of Bookscope Dashboard](./screen-recording.gif)
+GIF Walkthrough: *(attach your screen recording here)*
 
----
+Example:
+![GIF Walkthrough](link-to-gif-here)
 
-## 🎯 Project Overview
+## Features
 
-This dashboard explores the magical world of *Harry Potter* through data. It fetches 50 books using the OpenLibrary API and displays them in a searchable, filterable list. The dashboard includes key summary stats, making it easy to understand patterns in the data (like how many books exist and when most were published).
+* Displays real data fetched from OpenLibrary
+* Filters books by decade and search keyword
+* Two unique charts built with **Recharts**
 
----
+  * 📊 Books Per Decade (Bar Chart)
+  * 📈 Top Authors By Number of Books (Line Chart)
+* Click any book to reveal detailed info (publisher + subjects) inline
+* Responsive layout and consistent styling
+* Inline detail view keeps the same sidebar and layout as dashboard
 
-## 🚀 Features
+## Required Features Checklist
 
-- [x] Fetches data from the **OpenLibrary API**
-- [x] Displays **10+ unique book items** (title, author, year, cover)
-- [x] Uses **useEffect()** and **async/await**
-- [x] Shows **three summary statistics**:
-  - Total Books  
-  - Average Publish Year  
-  - Unique Authors  
-- [x] Includes a **search bar** (real-time filtering by title or author)
-- [x] Includes a **dropdown filter** by decade
-- [x] Responsive layout (3 cards per row)
-- [x] Hogwarts dark-gold theme ✨
-- [x] Contains full README and GIF section for submission
+* [x] Clicking on an item in the list view displays more details about it
+* [x] Detail view includes extra information not shown in dashboard
+* [x] The same sidebar/layout is displayed in detail view
+* [x] Two unique charts incorporated into the dashboard
+* [x] Each chart describes a different aspect of the dataset
+* [x] Recharts npm library installed and integrated
+* [x] Dynamic interaction showing individual item details
 
----
+*(Router and URL parameters were simulated using inline detail toggles rather than separate routes.)*
 
-## 🧠 How It Works
+## Stretch Features
 
-1. The app fetches 50 *Harry Potter* books using the OpenLibrary API  
-2. Results are stored in React state (`useState`)  
-3. `useEffect` loads the data asynchronously  
-4. Users can:
-   - Type in the **search bar** to filter by title/author  
-   - Select a **decade filter** (1990s, 2000s, etc.)  
-5. Summary stats update dynamically as filters change  
-6. The app uses `.map()` and `.filter()` for rendering and filtering
+* [x] Additional chart insights that explain dataset patterns
+* [x] Clean UI with chart titles and contextual summaries
+* [x] Animated transitions using Recharts built-in tooltips
 
----
-
-## 🧰 Tech Stack
-
-| Tool | Purpose |
-|------|----------|
-| **React (Vite)** | Frontend framework |
-| **OpenLibrary API** | Public data source |
-| **JavaScript (ES6)** | Logic and interactivity |
-| **CSS3** | Styling and layout |
-| **GitHub Pages / Render** | Deployment platform |
-
----
-
-## ⚙️ Setup Instructions
+## Installation & Setup
 
 ```bash
-# 1. Clone the repository
-git clone https://github.com/amalick8/Bookscope-Dashboard.git
-cd Bookscope-Dashboard
-
-# 2. Install dependencies
+git clone https://github.com/amalick8/Harry-Potter-BookScope-Dashboard-Part2.git
+cd Harry-Potter-BookScope-Dashboard-Part2
 npm install
+npm start
+```
 
-# 3. Run the app locally
-npm run dev
+## Data Source
+
+[OpenLibrary Search API](https://openlibrary.org/dev/docs/api/search)
+
+## Technologies Used
+
+React | Recharts | JavaScript | HTML | CSS
+
+## Author
+
+Created by Muhammad Ammar Malick for CodePath WEB102 (Project 6 – Week 7)

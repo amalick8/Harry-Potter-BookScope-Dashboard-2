@@ -3,20 +3,55 @@ import { useParams, Link } from "react-router-dom";
 
 function BookDetail() {
   const { id } = useParams();
-  const [book, setBook] = useState(null);
+  const [book, setBook] = useState(undefined); // undefined = loading, null = not found
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch(
-        "https://openlibrary.org/search.json?q=harry+potter&limit=50"
-      );
-      const data = await res.json();
-      setBook(data.docs[id]);
+      try {
+        const res = await fetch(
+          "https://openlibrary.org/search.json?q=harry+potter&limit=50"
+        );
+        const data = await res.json();
+
+        // Support both index-based ids (e.g. "/book/3") and key-tail ids (e.g. "/book/OL12345W")
+        let found = null;
+        if (id && /^\d+$/.test(id)) {
+          const idx = parseInt(id, 10);
+          found = data.docs[idx];
+        }
+        if (!found) {
+          found = data.docs.find((d) => d.key?.split("/").pop() === id);
+        }
+
+        setBook(found ?? null);
+      } catch (err) {
+        setError(err?.message || String(err));
+        setBook(null);
+      }
     };
     fetchData();
   }, [id]);
 
-  if (!book) return <p>Loading...</p>;
+  if (book === undefined) return <p>Loading...</p>;
+  if (error)
+    return (
+      <div className="detail-view">
+        <Link to="/" className="back-link">
+          ← Back to Dashboard
+        </Link>
+        <p>Error: {error}</p>
+      </div>
+    );
+  if (!book)
+    return (
+      <div className="detail-view">
+        <Link to="/" className="back-link">
+          ← Back to Dashboard
+        </Link>
+        <p>Book not found.</p>
+      </div>
+    );
 
   const coverId = book.cover_i;
   const coverUrl = coverId
